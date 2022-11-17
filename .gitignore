@@ -1,3 +1,5 @@
 /.vs/
 /NewsParser/bin/
 /NewsParser/obj/
+/NewsParserDAL/bin/
+/NewsParserDAL/obj/

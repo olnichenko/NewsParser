@@ -1,7 +1,12 @@
+using NewsParser;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.MapSettings(builder.Configuration);
+builder.Services.MapRepositories();
 
 var app = builder.Build();
 
