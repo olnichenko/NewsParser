@@ -2,6 +2,8 @@
 using NewsParser.Models;
 using System.Runtime;
 using NewsParserDAL;
+using NewsParserDAL.Repositories;
+using NewsParser.Services;
 
 namespace NewsParser
 {
@@ -17,7 +19,14 @@ namespace NewsParser
         }
         public static void MapRepositories(this IServiceCollection services)
         {
-            //services.AddScoped((_) => new BlogsRepository(new BpDbContext(_dbSettings.ConnectionString)));
+            // services.AddScoped((_) => new ArticlesRepository(new NewsParserDbContext(_dbSettings.ConnectionString)));
+            // services.AddScoped((_) => new CategoriesRepository(new NewsParserDbContext(_dbSettings.ConnectionString)));
+            var context = new NewsParserDbContext(_dbSettings.ConnectionString);
+            var articlesRepo = new ArticlesRepository(new NewsParserDbContext(_dbSettings.ConnectionString));
+            var categoriesRepo = new CategoriesRepository(new NewsParserDbContext(_dbSettings.ConnectionString));
+
+            services.AddScoped((_) => new TelegramService());
+            services.AddScoped((_) => new ArticleService(articlesRepo, categoriesRepo));
         }
     }
 }

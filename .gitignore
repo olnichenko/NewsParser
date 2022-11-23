@@ -3,3 +3,6 @@
 /NewsParser/obj/
 /NewsParserDAL/bin/
 /NewsParserDAL/obj/
+/NewsParser/NewParser.db
+/NewsParser/NewParser.db-shm
+/NewsParser/NewParser.db-wal

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsParserDAL;
 
@@ -10,9 +11,11 @@ using NewsParserDAL;
 namespace NewsParserDAL.Migrations
 {
     [DbContext(typeof(NewsParserDbContext))]
-    partial class NewsParserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117164641_Added_url")]
+    partial class Addedurl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -30,8 +33,7 @@ namespace NewsParserDAL.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DatePublished")
-                        .IsRequired()
+                    b.Property<DateTime>("DatePublished")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateSaved")
